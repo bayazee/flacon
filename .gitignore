@@ -38,4 +38,3 @@ nosetests.xml
 .DS_Store
 .hg/
 .hgignore
-
