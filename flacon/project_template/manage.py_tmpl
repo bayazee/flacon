@@ -1,0 +1,7 @@
+#!/usr/bin/env python
+
+
+from flacon import exec_manager
+from {{ project_name }}.config import DevelopmentConfig
+
+exec_manager(DevelopmentConfig.APP_NAME, DevelopmentConfig)

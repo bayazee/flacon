@@ -1,0 +1,62 @@
+import logging
+from datetime import timedelta
+
+
+class DefaultConfig(object):
+    # Essentials
+    APP_NAME = '{{ project_name }}'
+
+    DEBUG = True
+    DEPLOYMENT = False
+
+    SECRET_KEY = '{{ secretkey }}'
+
+    MAIN_URL = 'http://example.ir'
+    MAIN_STATIC_URL = 'http://static.example.ir'
+
+    INSTALLED_EXTENSIONS = ['cache', 'mosession', 'auth', 'captcha', 'mail', 'babel']
+    INSTALLED_BLUEPRINTS = []
+
+    # Database
+    MONGODB_HOST = 'mongo.example.ir'
+    MONGODB_PORT = 27017
+    MONGODB_DATABASE = '{{ project_name }}'
+
+    # Logging
+    if DEBUG:
+        LOG_FORMAT = '\033[1;35m[%(asctime)s]\033[1;m [\033[1;31m %(levelname)s \033[1;m] \033[1;32m[%(logger_name)s]\033[1;m: \
+        \033[1;33m %(message)s \033[1;m'
+    else:
+        LOG_FORMAT = '[%(asctime)s] %(levelname)s [%(logger_name)s]: %(message)s'
+
+    # Authentication
+    AUTHENTICATION_BACKENDS = ['flaskext.auth.backends.BaseBackend']
+
+    LOGIN_URL = MAIN_URL + '/login/'
+    LOGOUT_URL = MAIN_URL + '/logout/'
+
+    # Initializers
+    INITIALIZERS = []
+    BEFORE_REQUEST_HANDLERS = []
+    AFTER_REQUEST_HANDLERS = []
+
+    # Localization and Internationalization
+    ACCEPT_LANGUAGES = ['fa', 'en']
+
+    BABEL_DEFAULT_LOCALE = 'en'
+    BABEL_DEFAULT_TIMEZONE = 'Asia/tehran'
+
+    # Session
+    SESSION_COOKIE_NAME = 'sid'
+    SESSION_COOKIE_DOMAIN = '.example.ir'
+    SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+    SESSION_COOKIE_HTTPONLY = True
+    PERMANENT_SESSION_LIFETIME = timedelta(days=14)
+
+    # Caching
+    CACHE_TYPE = 'simple'
+
+
+class DevelopmentConfig(DefaultConfig):
+    MAIN_URL = 'http://example.ir:5000'
+    MAIN_STATIC_URL = 'http://static.example.ir:5000'

@@ -1,0 +1,4 @@
+include *.py
+recursive-include flacon *
+recursive-exclude docs *.pyc
+recursive-exclude docs *.pyo
